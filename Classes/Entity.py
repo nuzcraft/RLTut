@@ -1,5 +1,6 @@
 # entity class file
 from bearlibterminal import terminal
+from helpers.is_blocked import is_blocked
 
 
 class Entity:
@@ -13,12 +14,13 @@ class Entity:
 
     def move(self, dx, dy):
         # move by the given amount
-        self.x += dx
-        self.y += dy
+        if not is_blocked(self.x + dx, self.y + dy):
+            self.x += dx
+            self.y += dy
 
     def draw(self):
         # set the color and then draw the character that represents this object at its position
-        terminal.color(self.color)
+        terminal.color(terminal.color_from_name(self.color))
         terminal.put(self.x, self.y, self.char)
 
     def clear(self):

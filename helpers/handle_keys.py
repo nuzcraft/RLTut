@@ -1,7 +1,6 @@
 from bearlibterminal import terminal
 import variables as var
 
-
 def handle_keys():
     # movement keys
     if terminal.has_input():
@@ -9,16 +8,16 @@ def handle_keys():
         # this section is inputs that take a turn
         if key == terminal.TK_RIGHT:
             # move the player right
-            var.playerx += 1
+            var.player.move(1, 0)
             return 'moving'
         elif key == terminal.TK_LEFT:
-            var.playerx -= 1
+            var.player.move(-1, 0)
             return 'moving'
         elif key == terminal.TK_UP:
-            var.playery -= 1
+            var.player.move(0, -1)
             return 'moving'
         elif key == terminal.TK_DOWN:
-            var.playery += 1
+            var.player.move(0, 1)
             return 'moving'
         if key == terminal.TK_ESCAPE:
             return 'exit'
