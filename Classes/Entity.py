@@ -19,6 +19,9 @@ class Entity:
             self.y += dy
 
     def draw(self):
+        # get the background color
+        bkcolor = terminal.pick_bkcolor(self.x, self.y)
+        terminal.bkcolor(bkcolor)
         # set the color and then draw the character that represents this object at its position
         terminal.color(terminal.color_from_name(self.color))
         terminal.put(self.x, self.y, self.char)

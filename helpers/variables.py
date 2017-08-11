@@ -9,15 +9,19 @@ SCREEN_HEIGHT = 50
 MAP_WIDTH = 80
 MAP_HEIGHT = 45
 
+ROOM_MAX_SIZE = 10
+ROOM_MIN_SIZE = 6
+MAX_ROOMS = 30
+
 state = 'idle'
 
 # Entities
-player = Entity(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, '@', 'white')
+player = Entity(25, 23, '@', 'white')
 npc = Entity(SCREEN_WIDTH / 2 - 5, SCREEN_HEIGHT / 2, '@', 'yellow')
 entities = [npc, player]
 
 # map stuff
-map = [[Tile(False)
+map = [[Tile(True)
         for y in range(MAP_HEIGHT)]
        for x in range(MAP_WIDTH)]
 

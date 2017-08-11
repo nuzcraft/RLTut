@@ -10,9 +10,10 @@ terminal.open()
 terminal.set("palette.color_dark_wall = 0,0,100")
 terminal.set("palette.color_dark_ground = 50,50,100")
 
+make_map()
+
 while var.state != 'exit':
     var.state = handle_keys()
-    make_map()
     render_all()
     terminal.refresh()
     for entity in var.entities:
