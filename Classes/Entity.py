@@ -1,6 +1,8 @@
 # entity class file
+import libtcodpy as lib
 from bearlibterminal import terminal
 from helpers.is_blocked import is_blocked
+from helpers.is_in_FOV import is_in_fov
 
 
 class Entity:
@@ -19,13 +21,17 @@ class Entity:
             self.y += dy
 
     def draw(self):
-        # get the background color
-        bkcolor = terminal.pick_bkcolor(self.x, self.y)
-        terminal.bkcolor(bkcolor)
-        # set the color and then draw the character that represents this object at its position
-        terminal.color(terminal.color_from_name(self.color))
-        terminal.put(self.x, self.y, self.char)
+        # only draw if in FOV
+        if is_in_fov(self.x, self.y):
+            # get the background color
+            bkcolor = terminal.pick_bkcolor(self.x, self.y)
+            terminal.bkcolor(bkcolor)
+            # set the color and then draw the character that represents this object at its position
+            terminal.color(terminal.color_from_name(self.color))
+            terminal.put(self.x, self.y, self.char)
 
     def clear(self):
         # erase the character that represents this object
+        bkcolor = terminal.pick_bkcolor(self.x, self.y)
+        terminal.bkcolor(bkcolor)
         terminal.put(self.x, self.y, ' ')
