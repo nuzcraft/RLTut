@@ -8,11 +8,13 @@ from helpers.is_in_FOV import is_in_fov
 class Entity:
     # this is a generic object: the player, a monster, an item, the stairs...
     # it is always represented by a character on screen
-    def __init__(self, x, y, char, color):
+    def __init__(self, x, y, char, name, color, blocks=False):
         self.x = x
         self.y = y
         self.char = char
+        self.name = name
         self.color = color
+        self.blocks = blocks
 
     def move(self, dx, dy):
         # move by the given amount

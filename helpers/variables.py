@@ -18,12 +18,14 @@ FOV_ALGO = 0 # default FOV algorithm
 FOV_LIGHT_WALLS = True
 TORCH_RADIUS = 10
 
-state = 'idle'
+MAX_ROOM_MONSTERS = 3
+
+game_state = 'playing'
+player_action = None
 
 # Entities
-player = Entity(25, 23, '@', 'white')
-npc = Entity(SCREEN_WIDTH / 2 - 5, SCREEN_HEIGHT / 2, '@', 'yellow')
-entities = [npc, player]
+player = Entity(25, 23, '@', 'player', 'white', blocks=True)
+entities = [player]
 
 # map stuff
 map = [[Tile(True)
@@ -40,5 +42,7 @@ def initializevariables():
     terminal.set("palette.color_dark_ground = 50,50,100")
     terminal.set("palette.color_light_wall = 130,110,50")
     terminal.set("palette.color_light_ground = 200,180,50")
+    terminal.set('palette.desaturated_green = 63,127,63')
+    terminal.set('palette.darker_green = 0,127,0')
 
 

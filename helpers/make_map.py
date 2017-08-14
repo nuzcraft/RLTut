@@ -6,6 +6,7 @@ from Classes.Entity import Entity
 from create_room import create_room
 from create_h_tunnel import create_h_tunnel
 from create_v_tunnel import create_v_tunnel
+from place_objects import place_objects
 
 
 def make_map():
@@ -40,8 +41,8 @@ def make_map():
             (new_x, new_y) = new_room.center()
 
             # optional: print room number to see how the map drawing worked
-            room_no = Entity(new_x, new_y, chr(65 + num_rooms), 'white')
-            var.entities.insert(0, room_no)
+            # room_no = Entity(new_x, new_y, chr(65 + num_rooms), 'white')
+            # var.entities.insert(0, room_no)
 
             if num_rooms == 0:
                 # this is the first room, where the player starts at
@@ -62,6 +63,8 @@ def make_map():
                     create_v_tunnel(prev_y, new_y, prev_x)
                     create_h_tunnel(prev_x, new_x, new_y)
 
+            # add some objects to the room, such as monterrs
+            place_objects(new_room)
             # finally, append the new room to the list
             rooms.append(new_room)
             num_rooms += 1

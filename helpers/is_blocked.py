@@ -3,5 +3,11 @@ import variables as var
 
 
 def is_blocked(x, y):
-    # returns true if the location is blocked
-    return var.map[x][y].blocked
+    # first test the map tile
+    if var.map[x][y].blocked:
+        return True
+    # now check for any blocking objects
+    for entity in var.entities:
+        if entity.blocks and entity.x == x and entity.y == y:
+            return True
+    return False

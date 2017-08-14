@@ -18,11 +18,16 @@ for y in range(var.MAP_HEIGHT):
     for x in range(var.MAP_WIDTH):
         lib.map_set_properties(var.fov_map, x, y, not var.map[x][y].block_sight, not var.map[x][y].blocked)
 
-while var.state != 'exit':
-    var.state = handle_keys()
+while var.player_action != 'exit':
+    var.player_action = handle_keys()
+    # let the monsters take their turn
+    if var.game_state == 'playing' and var.player_action != 'didnt-take-turn':
+        for entity in var.entities:
+            if entity != var.player:
+                print 'The ' + entity.name + ' growls!'
     render_all()
     terminal.refresh()
     for entity in var.entities:
         entity.clear()
-    if var.state == 'exit':
+    if var.player_action == 'exit':
         terminal.close()
