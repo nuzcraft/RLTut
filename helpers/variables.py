@@ -3,6 +3,7 @@ import libtcodpy as lib
 from bearlibterminal import terminal
 from Classes.Entity import Entity
 from Classes.Tile import Tile
+from Classes.Fighter import Fighter
 
 SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 50
@@ -24,7 +25,8 @@ game_state = 'playing'
 player_action = None
 
 # Entities
-player = Entity(25, 23, '@', 'player', 'white', blocks=True)
+fighter_component = Fighter(hp=30, defense=2, power=5)
+player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=fighter_component)
 entities = [player]
 
 # map stuff

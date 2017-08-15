@@ -16,7 +16,7 @@ def player_move_or_attack(dx, dy):
 
     # attack if target was found, move otherwise
     if target is not None:
-        print 'The ' + target.name + ' laughs at your puny efforts to attack it!'
+        var.player.fighter.attack(target)
     else:
         var.player.move(dx, dy)
         var.fov_recompute = True

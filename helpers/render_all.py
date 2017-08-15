@@ -39,3 +39,9 @@ def render_all():
     for entity in var.entities:
         entity.draw()
 
+    # show the players stats
+    terminal.color(terminal.color_from_name('white'))
+    terminal.bkcolor(terminal.color_from_name('black'))
+    terminal.printf(1, var.SCREEN_HEIGHT - 2, 'HP: ' + str(var.player.fighter.hp) +
+                    '/' + str(var.player.fighter.max_hp))
+

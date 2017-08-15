@@ -1,20 +1,26 @@
 # entity class file
-import libtcodpy as lib
 from bearlibterminal import terminal
 from helpers.is_blocked import is_blocked
 from helpers.is_in_FOV import is_in_fov
+import math
 
 
 class Entity:
     # this is a generic object: the player, a monster, an item, the stairs...
     # it is always represented by a character on screen
-    def __init__(self, x, y, char, name, color, blocks=False):
+    def __init__(self, x, y, char, name, color, blocks=False, fighter=None, ai=None):
         self.x = x
         self.y = y
         self.char = char
         self.name = name
         self.color = color
         self.blocks = blocks
+        self.fighter = fighter
+        if self.fighter: # let the fighter component know who owns it
+            self.fighter.owner = self
+        self.ai = ai
+        if self.ai: # let the ai component know who owns it
+            self.ai.owner = self
 
     def move(self, dx, dy):
         # move by the given amount
@@ -37,3 +43,21 @@ class Entity:
         bkcolor = terminal.pick_bkcolor(self.x, self.y)
         terminal.bkcolor(bkcolor)
         terminal.put(self.x, self.y, ' ')
+
+    def move_towards(self, target_x, target_y):
+        # vector from this object to the target, and distance
+        dx = target_x - self.x
+        dy = target_y - self.y
+        distance = math.sqrt(dx ** 2 + dy ** 2)
+
+        # normalize it to length 1(preserving direction) then round it and
+        # convert to integer so the movement is restricted to map grid
+        dx = int(round(dx / distance))
+        dy = int(round(dy / distance))
+        self.move(dx, dy)
+
+    def distance_to(self, other):
+        # return the distance to another object
+        dx = other.x - self.x
+        dy = other.y - self.y
+        return math.sqrt(dx ** 2 + dy ** 2)

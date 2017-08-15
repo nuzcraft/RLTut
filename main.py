@@ -23,8 +23,8 @@ while var.player_action != 'exit':
     # let the monsters take their turn
     if var.game_state == 'playing' and var.player_action != 'didnt-take-turn':
         for entity in var.entities:
-            if entity != var.player:
-                print 'The ' + entity.name + ' growls!'
+            if entity.ai:
+                entity.ai.take_turn()
     render_all()
     terminal.refresh()
     for entity in var.entities:
