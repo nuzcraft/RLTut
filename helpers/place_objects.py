@@ -5,6 +5,7 @@ from is_blocked import is_blocked
 from Classes.Entity import Entity
 from Classes.Fighter import Fighter
 from Classes.BasicMonster import BasicMonster
+from helpers.monster_death import monster_death
 
 
 def place_objects(room):
@@ -17,13 +18,13 @@ def place_objects(room):
         y = randint(room.y1, room.y2)
         if randint(0, 100) < 80: # 80% chance Orc
             # create an orc
-            fighter_component = Fighter(hp=10, defense=0, power=3)
+            fighter_component = Fighter(hp=10, defense=0, power=3, death_function=monster_death)
             ai_component = BasicMonster()
             monster = Entity(x, y, 'o', 'orc', 'desaturated_green', blocks=True
                              , fighter=fighter_component, ai=ai_component)
         else:
             # create a troll
-            fighter_component = Fighter(hp=16, defense=1, power=4)
+            fighter_component = Fighter(hp=16, defense=1, power=4, death_function=monster_death)
             ai_component = BasicMonster()
             monster = Entity(x, y, 'T', 'troll', 'darker_green', blocks=True
                              , fighter=fighter_component, ai=ai_component)

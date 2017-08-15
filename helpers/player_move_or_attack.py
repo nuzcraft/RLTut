@@ -10,7 +10,7 @@ def player_move_or_attack(dx, dy):
     # try to find an attackable object there
     target = None
     for entity in var.entities:
-        if entity.x == x and entity.y == y:
+        if entity.fighter and entity.x == x and entity.y == y:
             target = entity
             break
 

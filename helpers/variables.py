@@ -4,6 +4,7 @@ from bearlibterminal import terminal
 from Classes.Entity import Entity
 from Classes.Tile import Tile
 from Classes.Fighter import Fighter
+from helpers.player_death import player_death
 
 SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 50
@@ -25,7 +26,7 @@ game_state = 'playing'
 player_action = None
 
 # Entities
-fighter_component = Fighter(hp=30, defense=2, power=5)
+fighter_component = Fighter(hp=30, defense=2, power=5, death_function=player_death)
 player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=fighter_component)
 entities = [player]
 
@@ -46,5 +47,6 @@ def initializevariables():
     terminal.set("palette.color_light_ground = 200,180,50")
     terminal.set('palette.desaturated_green = 63,127,63')
     terminal.set('palette.darker_green = 0,127,0')
+    terminal.set('palette.dark_red = 191,0,0')
 
 

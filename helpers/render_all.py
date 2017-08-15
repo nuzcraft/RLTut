@@ -35,9 +35,11 @@ def render_all():
                     terminal.bkcolor(terminal.color_from_name('color_light_ground'))
                     terminal.put(x, y, ' ')
 
-    # draw all objects in the list
+    # draw all objects in the list, player last
     for entity in var.entities:
-        entity.draw()
+        if entity != var.player:
+            entity.draw()
+    var.player.draw()
 
     # show the players stats
     terminal.color(terminal.color_from_name('white'))
