@@ -5,6 +5,7 @@ from helpers.handle_keys import handle_keys
 import helpers.variables as var
 from helpers.render_all import render_all
 from helpers.make_map import make_map
+from helpers.message import message
 
 terminal.open()
 
@@ -12,6 +13,8 @@ terminal.open()
 var.initializevariables()
 
 make_map()
+
+message('Welcome stranger! Prepare to perish in the Tombs of the Ancient Kings.', 'red')
 
 # set fov_map
 for y in range(var.MAP_HEIGHT):

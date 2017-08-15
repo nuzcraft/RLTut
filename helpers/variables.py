@@ -10,7 +10,18 @@ SCREEN_WIDTH = 80
 SCREEN_HEIGHT = 50
 
 MAP_WIDTH = 80
-MAP_HEIGHT = 45
+MAP_HEIGHT = 43
+
+PANEL_HEIGHT = 7
+PANEL_Y = SCREEN_HEIGHT - PANEL_HEIGHT
+BAR_WIDTH = 20
+
+MSG_X = BAR_WIDTH + 2
+MSG_WIDTH = SCREEN_WIDTH - BAR_WIDTH - 2
+MSG_HEIGHT = PANEL_HEIGHT - 1
+
+# create list of game messages and colors, starts empty
+game_msgs = []
 
 ROOM_MAX_SIZE = 10
 ROOM_MIN_SIZE = 6
@@ -47,6 +58,8 @@ def initializevariables():
     terminal.set("palette.color_light_ground = 200,180,50")
     terminal.set('palette.desaturated_green = 63,127,63')
     terminal.set('palette.darker_green = 0,127,0')
+    terminal.set('palette.light_red = 255,114,114')
     terminal.set('palette.dark_red = 191,0,0')
+    terminal.set('palette.darker_red = 127,0,0')
 
 

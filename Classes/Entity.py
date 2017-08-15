@@ -32,16 +32,14 @@ class Entity:
         # only draw if in FOV
         if is_in_fov(self.x, self.y):
             # get the background color
-            bkcolor = terminal.pick_bkcolor(self.x, self.y)
-            terminal.bkcolor(bkcolor)
+            terminal.bkcolor(terminal.color_from_name('transparent'))
             # set the color and then draw the character that represents this object at its position
             terminal.color(terminal.color_from_name(self.color))
             terminal.put(self.x, self.y, self.char)
 
     def clear(self):
         # erase the character that represents this object
-        bkcolor = terminal.pick_bkcolor(self.x, self.y)
-        terminal.bkcolor(bkcolor)
+        terminal.bkcolor(terminal.color_from_name('transparent'))
         terminal.put(self.x, self.y, ' ')
 
     def move_towards(self, target_x, target_y):

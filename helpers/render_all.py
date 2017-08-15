@@ -2,6 +2,7 @@
 import libtcodpy as lib
 from bearlibterminal import terminal
 import variables as var
+from helpers.render_bar import render_bar
 
 
 def render_all():
@@ -42,8 +43,13 @@ def render_all():
     var.player.draw()
 
     # show the players stats
-    terminal.color(terminal.color_from_name('white'))
-    terminal.bkcolor(terminal.color_from_name('black'))
-    terminal.printf(1, var.SCREEN_HEIGHT - 2, 'HP: ' + str(var.player.fighter.hp) +
-                    '/' + str(var.player.fighter.max_hp))
+    render_bar(1, var.PANEL_Y + 1, var.BAR_WIDTH, 'HP', var.player.fighter.hp
+               , var.player.fighter.max_hp, 'light_red', 'darker_red')
 
+    # print the game messages
+    y = var.PANEL_Y
+    for (line, color) in var.game_msgs:
+        terminal.color(terminal.color_from_name(color))
+        terminal.bkcolor(terminal.color_from_name('transparent'))
+        terminal.printf(var.MSG_X, y, line)
+        y += 1
