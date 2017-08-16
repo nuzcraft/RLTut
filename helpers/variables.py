@@ -61,5 +61,6 @@ def initializevariables():
     terminal.set('palette.light_red = 255,114,114')
     terminal.set('palette.dark_red = 191,0,0')
     terminal.set('palette.darker_red = 127,0,0')
+    terminal.set('palette.light_grey = 159, 159, 159')
 
 

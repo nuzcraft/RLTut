@@ -3,6 +3,7 @@ import libtcodpy as lib
 from bearlibterminal import terminal
 import variables as var
 from helpers.render_bar import render_bar
+from helpers.get_names_under_mouse import get_names_under_mouse
 
 
 def render_all():
@@ -53,3 +54,8 @@ def render_all():
         terminal.bkcolor(terminal.color_from_name('transparent'))
         terminal.printf(var.MSG_X, y, line)
         y += 1
+
+    # print the names of entities under the mouse
+    terminal.color(terminal.color_from_name('light_grey'))
+    terminal.bkcolor(terminal.color_from_name('transparent'))
+    terminal.printf(1, var.PANEL_Y, get_names_under_mouse())
