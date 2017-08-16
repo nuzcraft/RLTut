@@ -5,6 +5,7 @@ from is_in_FOV import is_in_fov
 
 
 def get_names_under_mouse():
+    # TODO make this update in real time
     (x, y) = (terminal.state(terminal.TK_MOUSE_X), terminal.state(terminal.TK_MOUSE_Y))
     print (x, y)
     names = [ent.name for ent in var.entities

@@ -8,7 +8,8 @@ import math
 class Entity:
     # this is a generic object: the player, a monster, an item, the stairs...
     # it is always represented by a character on screen
-    def __init__(self, x, y, char, name, color, blocks=False, fighter=None, ai=None):
+    def __init__(self, x, y, char, name, color, blocks=False
+                 , fighter=None, ai=None, item=None):
         self.x = x
         self.y = y
         self.char = char
@@ -21,6 +22,9 @@ class Entity:
         self.ai = ai
         if self.ai: # let the ai component know who owns it
             self.ai.owner = self
+        self.item = item
+        if self.item:
+            self.item.owner = self
 
     def move(self, dx, dy):
         # move by the given amount

@@ -32,9 +32,15 @@ FOV_LIGHT_WALLS = True
 TORCH_RADIUS = 10
 
 MAX_ROOM_MONSTERS = 3
+MAX_ROOM_ITEMS = 2
+
+inventory = []
+INVENTORY_WIDTH = 50
 
 game_state = 'playing'
 player_action = None
+
+HEAL_AMOUNT = 4
 
 # Entities
 fighter_component = Fighter(hp=30, defense=2, power=5, death_function=player_death)
@@ -62,5 +68,6 @@ def initializevariables():
     terminal.set('palette.dark_red = 191,0,0')
     terminal.set('palette.darker_red = 127,0,0')
     terminal.set('palette.light_grey = 159, 159, 159')
+    terminal.set('palette.light_violet = 184, 114, 255')
 
 

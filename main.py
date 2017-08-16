@@ -28,9 +28,8 @@ while var.player_action != 'exit':
         for entity in var.entities:
             if entity.ai:
                 entity.ai.take_turn()
+    terminal.clear()
     render_all()
     terminal.refresh()
-    for entity in var.entities:
-        entity.clear()
     if var.player_action == 'exit':
         terminal.close()
