@@ -7,7 +7,7 @@ def monster_death(monster):
     # can't be attacked and doesn't move
     print monster.name.capitalize() + ' is dead'
     monster.char = '%'
-    monster.color = 'dark_red'
+    monster.color = 'dark red'
     monster.blocks = False
     monster.fighter = None
     monster.ai = None

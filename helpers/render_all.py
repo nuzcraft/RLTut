@@ -45,7 +45,7 @@ def render_all():
 
     # show the players stats
     render_bar(1, var.PANEL_Y + 1, var.BAR_WIDTH, 'HP', var.player.fighter.hp
-               , var.player.fighter.max_hp, 'light_red', 'darker_red')
+               , var.player.fighter.max_hp, 'light red', 'darker red')
 
     # print the game messages
     y = var.PANEL_Y
@@ -56,6 +56,6 @@ def render_all():
         y += 1
 
     # print the names of entities under the mouse
-    terminal.color(terminal.color_from_name('light_grey'))
+    terminal.color(terminal.color_from_name('light grey'))
     terminal.bkcolor(terminal.color_from_name('transparent'))
     terminal.printf(1, var.PANEL_Y, get_names_under_mouse())

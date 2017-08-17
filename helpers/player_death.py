@@ -7,4 +7,4 @@ def player_death(player):
     var.game_state = 'dead'
     # for added affect, transform the player into a corpse!
     player.char = '%'
-    player.color = 'dark_red'
+    player.color = 'dark red'

@@ -42,6 +42,12 @@ player_action = None
 
 HEAL_AMOUNT = 4
 
+LIGHTNING_DAMAGE = 20
+LIGHTNING_RANGE = 5
+
+CONFUSE_NUM_TURNS = 10
+CONFUSE_RANGE = 8
+
 # Entities
 fighter_component = Fighter(hp=30, defense=2, power=5, death_function=player_death)
 player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=fighter_component)
@@ -63,11 +69,5 @@ def initializevariables():
     terminal.set("palette.color_light_wall = 130,110,50")
     terminal.set("palette.color_light_ground = 200,180,50")
     terminal.set('palette.desaturated_green = 63,127,63')
-    terminal.set('palette.darker_green = 0,127,0')
-    terminal.set('palette.light_red = 255,114,114')
-    terminal.set('palette.dark_red = 191,0,0')
-    terminal.set('palette.darker_red = 127,0,0')
-    terminal.set('palette.light_grey = 159, 159, 159')
-    terminal.set('palette.light_violet = 184, 114, 255')
 
 
