@@ -3,6 +3,7 @@ import variables as var
 from player_move_or_attack import player_move_or_attack
 from helpers.inventory_menu import inventory_menu
 
+
 def handle_keys():
     # movement keys
     if terminal.has_input():
@@ -37,6 +38,11 @@ def handle_keys():
                 chosen_item = inventory_menu('Press the key next to an item to use it, or any other to cancel. \n')
                 if chosen_item is not None:
                     chosen_item.use()
+            elif key == terminal.TK_D:
+                # show the inventory, if an item is selected, drop it
+                chosen_item = inventory_menu('Press the key next to an item to drop it, or any other to cancel.\n')
+                if chosen_item is not None:
+                    chosen_item.drop()
         if key == terminal.TK_ESCAPE:
             return 'exit'
     return 'didnt-take-turn'
