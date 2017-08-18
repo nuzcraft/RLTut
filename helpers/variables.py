@@ -48,6 +48,9 @@ LIGHTNING_RANGE = 5
 CONFUSE_NUM_TURNS = 10
 CONFUSE_RANGE = 8
 
+FIREBALL_RADIUS = 3
+FIREBALL_DAMAGE = 12
+
 # Entities
 fighter_component = Fighter(hp=30, defense=2, power=5, death_function=player_death)
 player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=fighter_component)

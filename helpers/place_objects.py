@@ -11,6 +11,7 @@ from helpers.send_to_back import send_to_back
 from helpers.cast_heal import cast_heal
 from helpers.cast_lightning import cast_lightning
 from helpers.cast_confuse import cast_confuse
+from helpers.cast_fireball import cast_fireball
 
 
 def place_objects(room):
@@ -51,15 +52,20 @@ def place_objects(room):
                 item_component = Item(use_function=cast_heal)
                 item = Entity(x, y, '!', 'healing potion', 'violet'
                               , item=item_component)
-            elif dice < 70 + 15:
-                # create a lighting bolt scroll 15%
+            elif dice < 70 + 10:
+                # create a lighting bolt scroll 10%
                 item_component = Item(use_function=cast_lightning)
                 item = Entity(x, y, '#', 'scroll of lightning bolt', 'light yellow'
                               , item=item_component)
-            else:
-                # create a confuse scroll (15%) chance
+            elif dice < 70 + 10 + 10:
+                # create a confuse scroll (10%) chance
                 item_component = Item(use_function=cast_confuse)
                 item = Entity(x, y, '#', 'scroll of confusion', 'light yellow'
+                              , item=item_component)
+            else:
+                # create a fireball scroll (10%) chance
+                item_component = Item(use_function=cast_fireball)
+                item = Entity(x, y, '#', 'scroll of fireball', 'light yellow'
                               , item=item_component)
 
             var.entities.append(item)
