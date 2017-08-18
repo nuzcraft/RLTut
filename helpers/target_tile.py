@@ -10,9 +10,10 @@ def target_tile(max_range=None):
     # optionally in a rnage, or None, None
     while True:
         # render the screen, this erases the inventory
+        terminal.clear()
+        render_all()
         terminal.refresh()
         mouse = terminal.read()
-        render_all()
         (x, y) = (terminal.state(terminal.TK_MOUSE_X), terminal.state(terminal.TK_MOUSE_Y))
         if mouse == terminal.TK_MOUSE_LEFT and is_in_fov(x, y) and \
                 (max_range is None or var.player.distance_to(x, y) <= max_range):

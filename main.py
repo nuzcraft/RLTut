@@ -7,6 +7,10 @@ from helpers.render_all import render_all
 from helpers.make_map import make_map
 from helpers.message import message
 
+from Classes.Item import Item
+from helpers.cast_fireball import cast_fireball
+from Classes.Entity import Entity
+
 terminal.open()
 
 # initialize variables
@@ -15,7 +19,11 @@ var.initializevariables()
 make_map()
 
 message('Welcome stranger! Prepare to perish in the Tombs of the Ancient Kings.', 'red')
-
+item_component = Item(use_function=cast_fireball)
+item = Entity(0, 0, '#', 'scroll of fireball', 'light yellow'
+              , item=item_component)
+var.entities.append(item)
+item.item.pick_up()
 # set fov_map
 for y in range(var.MAP_HEIGHT):
     for x in range(var.MAP_WIDTH):

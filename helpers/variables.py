@@ -73,4 +73,7 @@ def initializevariables():
     terminal.set("palette.color_light_ground = 200,180,50")
     terminal.set('palette.desaturated_green = 63,127,63')
 
+    # inputs
+    terminal.set('input.filter = [keyboard, mouse]')
+
 
