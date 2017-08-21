@@ -61,4 +61,7 @@ map = [[Tile(True)
 fov_map = lib.map_new(MAP_WIDTH, MAP_HEIGHT)
 fov_recompute = True
 
+game_state = 'playing'
+player_action = None
+
 

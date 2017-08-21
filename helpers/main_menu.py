@@ -4,6 +4,8 @@ import variables as var
 from helpers.menu import menu
 from helpers.new_game import new_game
 from helpers.play_game import play_game
+from helpers.load_game import load_game
+from helpers.msgbox import msgbox
 
 
 def main_menu():
@@ -24,6 +26,15 @@ def main_menu():
             new_game()
             play_game()
             terminal.clear()
+        if choice == 1: # load game
+            try:
+                load_game()
+            except:
+                terminal.clear()
+                msgbox('\n No saved game to load. \n', 24)
+                terminal.clear()
+                continue
+            play_game()
         elif choice == 2:  # quit
             quit = True
 
