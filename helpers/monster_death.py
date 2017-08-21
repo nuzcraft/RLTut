@@ -1,11 +1,12 @@
 # function defining what happens when a monster dies
 from helpers.send_to_back import send_to_back
+from helpers.message import message
 
 
 def monster_death(monster):
     # transform it into a nasty corpse! it doesn't block
     # can't be attacked and doesn't move
-    print monster.name.capitalize() + ' is dead'
+    message( monster.name.capitalize() + ' is dead', 'orange')
     monster.char = '%'
     monster.color = 'dark red'
     monster.blocks = False

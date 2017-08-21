@@ -37,9 +37,6 @@ MAX_ROOM_ITEMS = 2
 inventory = []
 INVENTORY_WIDTH = 50
 
-game_state = 'playing'
-player_action = None
-
 HEAL_AMOUNT = 4
 
 LIGHTNING_DAMAGE = 20
@@ -63,17 +60,5 @@ map = [[Tile(True)
 
 fov_map = lib.map_new(MAP_WIDTH, MAP_HEIGHT)
 fov_recompute = True
-
-def initializevariables():
-
-    # custom colors
-    terminal.set("palette.color_dark_wall = 0,0,100")
-    terminal.set("palette.color_dark_ground = 50,50,100")
-    terminal.set("palette.color_light_wall = 130,110,50")
-    terminal.set("palette.color_light_ground = 200,180,50")
-    terminal.set('palette.desaturated_green = 63,127,63')
-
-    # inputs
-    terminal.set('input.filter = [keyboard, mouse]')
 
 

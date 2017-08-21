@@ -9,6 +9,8 @@ def menu(header, options, width):
         raise ValueError('Cannot have a menu with more than 26 options.')
     header_text = textwrap.wrap(header, width)
     header_height = len(header_text)
+    if header == '':
+        header_height = 0
     height = len(options) + header_height
 
     # top left corner of menu
@@ -28,7 +30,23 @@ def menu(header, options, width):
         y_location += 1
         letter_index += 1
     terminal.refresh()
+
     key = terminal.read()
+
+    # if key == terminal.TK_MOUSE_LEFT:
+    #     (menu_x, menu_y) = (terminal.state(terminal.TK_MOUSE_X), terminal.state(terminal.TK_MOUSE_Y))
+    #     # check if click is within the menu and on a choice
+    #     if menu_x >= x and menu_x < x + width and menu_y >= y + header_height and menu_y < y + height - header_height:
+    #         return menu_y
+    #
+    # if key == terminal.TK_MOUSE_RIGHT or key == terminal.TK_ESCAPE:
+    #     return None # cancel if the player right-clicked or pressed escape
+    if key == terminal.TK_ENTER and terminal.check(terminal.TK_ALT):
+        # alt+enter changes fullscreen
+        fullscreen = terminal.check(terminal.TK_FULLSCREEN)
+        fullscreen = not fullscreen
+        terminal.set('window.fullscreen=' + fullscreen)
+
     if terminal.check(terminal.TK_WCHAR):
         index = terminal.state(terminal.TK_WCHAR) - ord('a')
         if index >=0 and index < len(options):

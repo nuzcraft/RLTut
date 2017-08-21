@@ -1,9 +1,11 @@
 # initialize the FOV
+from bearlibterminal import terminal
 import libtcodpy as lib
 import variables as var
 
 
 def initialize_fov():
+    terminal.clear()
     # set fov_map
     for y in range(var.MAP_HEIGHT):
         for x in range(var.MAP_WIDTH):

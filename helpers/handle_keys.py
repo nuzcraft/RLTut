@@ -43,6 +43,11 @@ def handle_keys():
                 chosen_item = inventory_menu('Press the key next to an item to drop it, or any other to cancel.\n')
                 if chosen_item is not None:
                     chosen_item.drop()
-        if key == terminal.TK_ESCAPE:
+        if key == terminal.TK_ENTER and terminal.check(terminal.TK_ALT):
+            # alt+enter swaps fullscreen
+            fullscreen = terminal.check(terminal.TK_FULLSCREEN)
+            fullscreen = not fullscreen
+            terminal.set('window.fullscreen=' + fullscreen)
+        if key == terminal.TK_ESCAPE or key == terminal.TK_CLOSE:
             return 'exit'
     return 'didnt-take-turn'

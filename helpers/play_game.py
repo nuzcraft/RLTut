@@ -18,4 +18,4 @@ def play_game():
         render_all()
         terminal.refresh()
         if var.player_action == 'exit':
-            terminal.close()
+            break

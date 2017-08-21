@@ -1,4 +1,5 @@
 # fighter class, used as a component of Entity
+from helpers.message import message
 
 
 class Fighter:
@@ -24,12 +25,12 @@ class Fighter:
         damage = self.power - target.fighter.defense
         if damage > 0:
             # make the target take some damage
-            print (self.owner.name.capitalize() + ' attacks ' + target.name +
-                   ' for ' + str(damage) + ' hit points.')
+            message(self.owner.name.capitalize() + ' attacks ' + target.name +
+                    ' for ' + str(damage) + ' hit points.')
             target.fighter.take_damage(damage)
         else:
-            print (self.owner.name.capitalize() + ' attacks ' + target.name +
-                   ' but it has no effect!')
+            message(self.owner.name.capitalize() + ' attacks ' + target.name +
+                    ' but it has no effect!')
 
     def heal(self, amount):
         # heal by the given amount, without going over max
