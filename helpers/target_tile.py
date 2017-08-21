@@ -16,7 +16,7 @@ def target_tile(max_range=None):
         mouse = terminal.read()
         (x, y) = (terminal.state(terminal.TK_MOUSE_X), terminal.state(terminal.TK_MOUSE_Y))
         if mouse == terminal.TK_MOUSE_LEFT and is_in_fov(x, y) and \
-                (max_range is None or var.player.distance_to(x, y) <= max_range):
+                (max_range is None or var.player.distance(x, y) <= max_range):
             return (x, y)
         if mouse == terminal.TK_MOUSE_RIGHT or mouse == terminal.TK_ESCAPE:
             return (None, None)
