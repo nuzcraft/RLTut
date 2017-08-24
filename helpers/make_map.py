@@ -1,12 +1,13 @@
 # function for making the map
-import variables as var
+import helpers.variables as var
 from random import randint
 from Classes.Rect import Rect
 from Classes.Entity import Entity
-from create_room import create_room
-from create_h_tunnel import create_h_tunnel
-from create_v_tunnel import create_v_tunnel
-from place_objects import place_objects
+from helpers.create_room import create_room
+from helpers.create_h_tunnel import create_h_tunnel
+from helpers.create_v_tunnel import create_v_tunnel
+from helpers.place_objects import place_objects
+from helpers.send_to_back import send_to_back
 
 
 def make_map():
@@ -68,5 +69,10 @@ def make_map():
             # finally, append the new room to the list
             rooms.append(new_room)
             num_rooms += 1
+
+            # create stairs at the center of the last room
+            stairs = Entity(new_x, new_y, '<', 'white')
+            var.entities.append(stairs)
+            send_to_back(stairs)
 
 
