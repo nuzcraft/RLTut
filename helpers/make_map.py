@@ -8,9 +8,19 @@ from helpers.create_h_tunnel import create_h_tunnel
 from helpers.create_v_tunnel import create_v_tunnel
 from helpers.place_objects import place_objects
 from helpers.send_to_back import send_to_back
+from Classes.Tile import Tile
+import libtcodpy as lib
 
 
 def make_map():
+    # map stuff
+    var.map = [[Tile(True)
+            for y in range(var.MAP_HEIGHT)]
+           for x in range(var.MAP_WIDTH)]
+
+    var.fov_map = lib.map_new(var.MAP_WIDTH, var.MAP_HEIGHT)
+    var.fov_recompute = True
+
     # create two rooms
     rooms = []
     num_rooms = 0
@@ -42,8 +52,8 @@ def make_map():
             (new_x, new_y) = new_room.center()
 
             # optional: print room number to see how the map drawing worked
-            # room_no = Entity(new_x, new_y, chr(65 + num_rooms), 'white')
-            # var.entities.insert(0, room_no)
+            room_no = Entity(new_x, new_y, chr(65 + num_rooms), 'room num', 'white')
+            var.entities.insert(0, room_no)
 
             if num_rooms == 0:
                 # this is the first room, where the player starts at
@@ -70,9 +80,9 @@ def make_map():
             rooms.append(new_room)
             num_rooms += 1
 
-            # create stairs at the center of the last room
-            stairs = Entity(new_x, new_y, '<', 'white')
-            var.entities.append(stairs)
-            send_to_back(stairs)
+    # create stairs at the center of the last room
+    var.stairs = Entity(new_x, new_y, '<', 'stairs', 'white')
+    var.entities.append(var.stairs)
+    send_to_back(var.stairs)
 
 

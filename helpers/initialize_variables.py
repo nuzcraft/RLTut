@@ -28,13 +28,13 @@ def initialize_variables():
     var.player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=var.fighter_component)
     var.entities = [var.player]
 
-    # map stuff
-    var.map = [[Tile(True)
-            for y in range(var.MAP_HEIGHT)]
-           for x in range(var.MAP_WIDTH)]
-
-    var.fov_map = lib.map_new(var.MAP_WIDTH, var.MAP_HEIGHT)
-    var.fov_recompute = True
+    # # map stuff
+    # var.map = [[Tile(True)
+    #         for y in range(var.MAP_HEIGHT)]
+    #        for x in range(var.MAP_WIDTH)]
+    #
+    # var.fov_map = lib.map_new(var.MAP_WIDTH, var.MAP_HEIGHT)
+    # var.fov_recompute = True
 
     # inventory
     var.inventory = []

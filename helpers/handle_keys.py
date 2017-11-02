@@ -2,6 +2,7 @@ from bearlibterminal import terminal
 import variables as var
 from player_move_or_attack import player_move_or_attack
 from helpers.inventory_menu import inventory_menu
+from helpers.next_level import next_level
 
 
 def handle_keys():
@@ -43,6 +44,10 @@ def handle_keys():
                 chosen_item = inventory_menu('Press the key next to an item to drop it, or any other to cancel.\n')
                 if chosen_item is not None:
                     chosen_item.drop()
+        if key == terminal.TK_COMMA and terminal.check(terminal.TK_SHIFT):
+            # go down stairs if the player is on them
+            if var.stairs.x == var.player.x and var.stairs.y == var.player.y:
+                next_level()
         if key == terminal.TK_ENTER and terminal.check(terminal.TK_ALT):
             # alt+enter swaps fullscreen
             fullscreen = terminal.check(terminal.TK_FULLSCREEN)
