@@ -52,8 +52,8 @@ def make_map():
             (new_x, new_y) = new_room.center()
 
             # optional: print room number to see how the map drawing worked
-            room_no = Entity(new_x, new_y, chr(65 + num_rooms), 'room num', 'white')
-            var.entities.insert(0, room_no)
+            # room_no = Entity(new_x, new_y, chr(65 + num_rooms), 'room num', 'white')
+            # var.entities.insert(0, room_no)
 
             if num_rooms == 0:
                 # this is the first room, where the player starts at
@@ -81,7 +81,7 @@ def make_map():
             num_rooms += 1
 
     # create stairs at the center of the last room
-    var.stairs = Entity(new_x, new_y, '<', 'stairs', 'white')
+    var.stairs = Entity(new_x, new_y, '<', 'stairs', 'white', always_visible=True)
     var.entities.append(var.stairs)
     send_to_back(var.stairs)
 

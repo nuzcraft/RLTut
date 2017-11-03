@@ -51,22 +51,22 @@ def place_objects(room):
                 # create a healing potion 70%
                 item_component = Item(use_function=cast_heal)
                 item = Entity(x, y, '!', 'healing potion', 'violet'
-                              , item=item_component)
+                              , item=item_component, always_visible=True)
             elif dice < 70 + 10:
                 # create a lighting bolt scroll 10%
                 item_component = Item(use_function=cast_lightning)
                 item = Entity(x, y, '#', 'scroll of lightning bolt', 'light yellow'
-                              , item=item_component)
+                              , item=item_component, always_visible=True)
             elif dice < 70 + 10 + 10:
                 # create a confuse scroll (10%) chance
                 item_component = Item(use_function=cast_confuse)
                 item = Entity(x, y, '#', 'scroll of confusion', 'light yellow'
-                              , item=item_component)
+                              , item=item_component, always_visible=True)
             else:
                 # create a fireball scroll (10%) chance
                 item_component = Item(use_function=cast_fireball)
                 item = Entity(x, y, '#', 'scroll of fireball', 'light yellow'
-                              , item=item_component)
+                              , item=item_component, always_visible=True)
 
             var.entities.append(item)
             send_to_back(item) # items appear below other objects

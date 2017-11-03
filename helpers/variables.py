@@ -53,6 +53,7 @@ fighter_component = Fighter(hp=30, defense=2, power=5, death_function=player_dea
 player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=fighter_component)
 stairs = None
 entities = [player]
+dungeon_level = None
 
 # map stuff
 map = [[Tile(True)

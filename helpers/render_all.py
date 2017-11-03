@@ -47,8 +47,11 @@ def render_all():
     render_bar(1, var.PANEL_Y + 1, var.BAR_WIDTH, 'HP', var.player.fighter.hp
                , var.player.fighter.max_hp, 'light red', 'darker red')
 
-    # print the game messages
+    # show the dungeon level
     y = var.PANEL_Y
+    terminal.printf(1, y + 3, 'Dungeon level ' + str(var.dungeon_level))
+
+    # print the game messages
     for (line, color) in var.game_msgs:
         terminal.color(terminal.color_from_name(color))
         terminal.bkcolor(terminal.color_from_name('transparent'))

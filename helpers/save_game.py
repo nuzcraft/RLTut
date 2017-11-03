@@ -12,4 +12,6 @@ def save_game():
     file['inventory'] = var.inventory
     file['game_msgs'] = var.game_msgs
     file['game_state'] = var.game_state
+    file['stairs_index'] = var.entities.index(var.stairs)
+    file['dungeon_level'] = var.dungeon_level
     file.close

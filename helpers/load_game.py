@@ -16,6 +16,8 @@ def load_game():
     var.inventory = file['inventory']
     var.game_msgs = file['game_msgs']
     var.game_state = file['game_state']
+    var.stairs = var.entities[file['stairs_index']]
+    var.dungeon_level = file['dungeon_level']
     file.close()
 
     initialize_fov()

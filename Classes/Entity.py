@@ -2,13 +2,14 @@
 from bearlibterminal import terminal
 from helpers.is_blocked import is_blocked
 from helpers.is_in_FOV import is_in_fov
+from helpers.is_explored import is_explored
 import math
 
 
 class Entity:
     # this is a generic object: the player, a monster, an item, the stairs...
     # it is always represented by a character on screen
-    def __init__(self, x, y, char, name, color, blocks=False
+    def __init__(self, x, y, char, name, color, blocks=False, always_visible=False
                  , fighter=None, ai=None, item=None):
         self.x = x
         self.y = y
@@ -16,6 +17,7 @@ class Entity:
         self.name = name
         self.color = color
         self.blocks = blocks
+        self.always_visible = always_visible
         self.fighter = fighter
         if self.fighter: # let the fighter component know who owns it
             self.fighter.owner = self
@@ -34,7 +36,7 @@ class Entity:
 
     def draw(self):
         # only draw if in FOV
-        if is_in_fov(self.x, self.y):
+        if is_in_fov(self.x, self.y) or (self.always_visible and is_explored(self.x, self.y)):
             # get the background color
             terminal.bkcolor(terminal.color_from_name('transparent'))
             # set the color and then draw the character that represents this object at its position

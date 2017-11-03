@@ -9,5 +9,6 @@ def next_level():
     message('You take a moment to rest and recover your strength.', 'light violet')
     var.player.fighter.heal(var.player.fighter.max_hp / 2)
     message('After a rare moment of peace, you descend deeper into the heart of the dungeon...', 'red')
+    var.dungeon_level += 1
     make_map()
     initialize_fov()
