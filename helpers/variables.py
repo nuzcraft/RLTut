@@ -48,8 +48,16 @@ CONFUSE_RANGE = 8
 FIREBALL_RADIUS = 3
 FIREBALL_DAMAGE = 12
 
+# experience and level-ups
+LEVEL_UP_BASE = 200
+LEVEL_UP_FACTOR = 150
+LEVEL_SCREEN_WIDTH = 40
+
+# character screen
+CHARACTER_SCREEN_WIDTH = 30
+
 # Entities
-fighter_component = Fighter(hp=30, defense=2, power=5, death_function=player_death)
+fighter_component = Fighter(hp=30, defense=2, power=5, xp=0, death_function=player_death)
 player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=fighter_component)
 stairs = None
 entities = [player]

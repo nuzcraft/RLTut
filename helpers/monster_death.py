@@ -6,7 +6,8 @@ from helpers.message import message
 def monster_death(monster):
     # transform it into a nasty corpse! it doesn't block
     # can't be attacked and doesn't move
-    message( monster.name.capitalize() + ' is dead', 'orange')
+    message(monster.name.capitalize() + ' is dead! You gain ' + str(monster.fighter.xp)
+            + ' experience points.', 'orange')
     monster.char = '%'
     monster.color = 'dark red'
     monster.blocks = False

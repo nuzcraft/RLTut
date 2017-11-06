@@ -24,13 +24,13 @@ def place_objects(room):
         y = randint(room.y1 + 1, room.y2 - 1)
         if randint(0, 100) < 80: # 80% chance Orc
             # create an orc
-            fighter_component = Fighter(hp=10, defense=0, power=3, death_function=monster_death)
+            fighter_component = Fighter(hp=10, defense=0, power=3, xp=35, death_function=monster_death)
             ai_component = BasicMonster()
             monster = Entity(x, y, 'o', 'orc', 'desaturated_green', blocks=True
                              , fighter=fighter_component, ai=ai_component)
         else:
             # create a troll
-            fighter_component = Fighter(hp=16, defense=1, power=4, death_function=monster_death)
+            fighter_component = Fighter(hp=16, defense=1, power=4, xp=100, death_function=monster_death)
             ai_component = BasicMonster()
             monster = Entity(x, y, 'T', 'troll', 'darker green', blocks=True
                              , fighter=fighter_component, ai=ai_component)

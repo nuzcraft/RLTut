@@ -4,6 +4,7 @@ from helpers.handle_keys import handle_keys
 from bearlibterminal import terminal
 from helpers.render_all import render_all
 from helpers.save_game import save_game
+from helpers.check_level_up import check_level_up
 
 
 def play_game():
@@ -19,6 +20,7 @@ def play_game():
         terminal.clear()
         render_all()
         terminal.refresh()
+        check_level_up()
         if var.player_action == 'exit':
             save_game()
             terminal.clear()

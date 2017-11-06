@@ -24,8 +24,9 @@ def initialize_variables():
     var.player_action = None
 
     # Entities
-    var.fighter_component = Fighter(hp=30, defense=2, power=5, death_function=player_death)
+    var.fighter_component = Fighter(hp=30, defense=2, power=5, xp=0, death_function=player_death)
     var.player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=var.fighter_component)
+    var.player.level = 1
     var.entities = [var.player]
 
     # # map stuff
