@@ -12,6 +12,7 @@ from helpers.cast_heal import cast_heal
 from helpers.cast_lightning import cast_lightning
 from helpers.cast_confuse import cast_confuse
 from helpers.cast_fireball import cast_fireball
+from helpers.random_choice import random_choice
 
 
 def place_objects(room):
@@ -22,13 +23,14 @@ def place_objects(room):
         # choose a random spot for the monster
         x = randint(room.x1 + 1, room.x2 - 1)
         y = randint(room.y1 + 1, room.y2 - 1)
-        if randint(0, 100) < 80: # 80% chance Orc
+        choice = random_choice(var.monster_chances)
+        if choice == 'orc': # 80% chance Orc
             # create an orc
             fighter_component = Fighter(hp=10, defense=0, power=3, xp=35, death_function=monster_death)
             ai_component = BasicMonster()
             monster = Entity(x, y, 'o', 'orc', 'desaturated_green', blocks=True
                              , fighter=fighter_component, ai=ai_component)
-        else:
+        elif choice == 'troll':
             # create a troll
             fighter_component = Fighter(hp=16, defense=1, power=4, xp=100, death_function=monster_death)
             ai_component = BasicMonster()
@@ -46,23 +48,23 @@ def place_objects(room):
         y = randint(room.y1 + 1, room.y2 - 1)
         # only place it if the tile is not blocked
         if not is_blocked(x, y):
-            dice = randint(0, 100)
-            if dice < 70:
+            choice = random_choice(var.item_chances)
+            if choice == 'heal':
                 # create a healing potion 70%
                 item_component = Item(use_function=cast_heal)
                 item = Entity(x, y, '!', 'healing potion', 'violet'
                               , item=item_component, always_visible=True)
-            elif dice < 70 + 10:
+            elif choice == 'lightning':
                 # create a lighting bolt scroll 10%
                 item_component = Item(use_function=cast_lightning)
                 item = Entity(x, y, '#', 'scroll of lightning bolt', 'light yellow'
                               , item=item_component, always_visible=True)
-            elif dice < 70 + 10 + 10:
+            elif choice == 'confuse':
                 # create a confuse scroll (10%) chance
                 item_component = Item(use_function=cast_confuse)
                 item = Entity(x, y, '#', 'scroll of confusion', 'light yellow'
                               , item=item_component, always_visible=True)
-            else:
+            elif choice == 'fireball':
                 # create a fireball scroll (10%) chance
                 item_component = Item(use_function=cast_fireball)
                 item = Entity(x, y, '#', 'scroll of fireball', 'light yellow'

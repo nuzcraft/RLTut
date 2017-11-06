@@ -56,6 +56,10 @@ LEVEL_SCREEN_WIDTH = 40
 # character screen
 CHARACTER_SCREEN_WIDTH = 30
 
+# monster and item chances
+monster_chances = {'orc': 80, 'troll': 20}
+item_chances = {'heal': 70, 'lightning': 10, 'fireball':10, 'confuse': 10}
+
 # Entities
 fighter_component = Fighter(hp=30, defense=2, power=5, xp=0, death_function=player_death)
 player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=fighter_component)
