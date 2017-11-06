@@ -48,7 +48,7 @@ def handle_keys():
                 return
             elif key == terminal.TK_KP_5:
                 var.fov_recompute = True
-                pass # do nothing
+                return # do nothing
             elif key == terminal.TK_G:
                 # pick up an item
                 for ent in var.entities: # look for an item at the players tile
