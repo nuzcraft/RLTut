@@ -1,6 +1,8 @@
 # class for items
-import helpers.variables as var
+from helpers.drop_item import drop_item
 from helpers.message import message
+from helpers.pick_up_item import pick_up_item
+from helpers.remove_item_from_inventory import remove_item_from_inventory
 
 
 class Item:
@@ -10,27 +12,21 @@ class Item:
 
     def pick_up(self):
         # add to the player's inventory and remove from the map
-        if len(var.inventory) >= 26:
-            message('Your inventory is full, cannot pick up '
-                    + self.owner.name + '.', 'red')
-        else:
-            var.inventory.append(self.owner)
-            var.entities.remove(self.owner)
-            message('You picked up a ' + self.owner.name
-                    + '!', 'green')
+        pick_up_item(self)
 
     def use(self):
+        # special case: if the object has the Equipment component, the "use"
+        # action is to equip/dequip
+        if self.owner.equipment:
+            self.owner.equipment.toggle_equip()
+            return
         # just call the "use_function" if defined
         if self.use_function is None:
             message('The ' + self.owner.name + ' cannot be used.')
         else:
             if self.use_function() != 'cancelled':
-                var.inventory.remove(self.owner) # destroy after use, unless cancelled
+                remove_item_from_inventory(self) # destroy after use, unless cancelled
 
     def drop(self):
         # add to the map and remove from the player's inventory. Also, place it at the player's coordinates
-        var.entities.append(self.owner)
-        var.inventory.remove(self.owner)
-        self.owner.x = var.player.x
-        self.owner.y = var.player.y
-        message('You dropped a ' + self.owner.name + '.', 'yellow')
+        drop_item(self)

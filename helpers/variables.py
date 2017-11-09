@@ -31,22 +31,19 @@ FOV_ALGO = 0 # default FOV algorithm
 FOV_LIGHT_WALLS = True
 TORCH_RADIUS = 10
 
-MAX_ROOM_MONSTERS = 3
-MAX_ROOM_ITEMS = 2
-
 inventory = []
 INVENTORY_WIDTH = 50
 
-HEAL_AMOUNT = 4
+HEAL_AMOUNT = 40
 
-LIGHTNING_DAMAGE = 20
+LIGHTNING_DAMAGE = 40
 LIGHTNING_RANGE = 5
 
 CONFUSE_NUM_TURNS = 10
 CONFUSE_RANGE = 8
 
 FIREBALL_RADIUS = 3
-FIREBALL_DAMAGE = 12
+FIREBALL_DAMAGE = 25
 
 # experience and level-ups
 LEVEL_UP_BASE = 200
@@ -56,12 +53,8 @@ LEVEL_SCREEN_WIDTH = 40
 # character screen
 CHARACTER_SCREEN_WIDTH = 30
 
-# monster and item chances
-monster_chances = {'orc': 80, 'troll': 20}
-item_chances = {'heal': 70, 'lightning': 10, 'fireball':10, 'confuse': 10}
-
 # Entities
-fighter_component = Fighter(hp=30, defense=2, power=5, xp=0, death_function=player_death)
+fighter_component = Fighter(hp=100, defense=1, power=4, xp=0, death_function=player_death)
 player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=fighter_component)
 stairs = None
 entities = [player]

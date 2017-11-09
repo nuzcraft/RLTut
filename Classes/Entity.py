@@ -1,5 +1,6 @@
 # entity class file
 from bearlibterminal import terminal
+from Classes.Item import Item
 from helpers.is_blocked import is_blocked
 from helpers.is_in_FOV import is_in_fov
 from helpers.is_explored import is_explored
@@ -10,7 +11,7 @@ class Entity:
     # this is a generic object: the player, a monster, an item, the stairs...
     # it is always represented by a character on screen
     def __init__(self, x, y, char, name, color, blocks=False, always_visible=False
-                 , fighter=None, ai=None, item=None):
+                 , fighter=None, ai=None, item=None, equipment=None):
         self.x = x
         self.y = y
         self.char = char
@@ -27,6 +28,12 @@ class Entity:
         self.item = item
         if self.item:
             self.item.owner = self
+        self.equipment = equipment
+        if self.equipment:
+            self.equipment.owner = self
+            self.item = Item()
+            self.item.owner = self
+
 
     def move(self, dx, dy):
         # move by the given amount
