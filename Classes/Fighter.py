@@ -1,17 +1,33 @@
 # fighter class, used as a component of Entity
 from helpers.message import message
 from helpers.yield_experience import yield_experience
+from helpers.get_all_equipped import get_all_equipped
 
 
 class Fighter:
     # combat related properties and methods (monster, player, NPC)
     def __init__(self, hp, defense, power, xp, death_function=None):
-        self.max_hp = hp
+        self.base_max_hp = hp
         self.hp = hp
-        self.defense = defense
-        self.power = power
+        self.base_defense = defense
+        self.base_power = power
         self.xp = xp
         self.death_function = death_function
+
+    @property
+    def power(self):
+        bonus = sum(equipment.power_bonus for equipment in get_all_equipped(self.owner))
+        return self.base_power + bonus
+
+    @property
+    def defense(self):
+        bonus = sum(equipment.defense_bonus for equipment in get_all_equipped(self.owner))
+        return self.base_defense + bonus
+
+    @property
+    def max_hp(self):
+        bonus = sum(equipment.max_hp_bonus for equipment in get_all_equipped(self.owner))
+        return self.base_max_hp + bonus
 
     def take_damage(self, damage):
         # apply damage if possible

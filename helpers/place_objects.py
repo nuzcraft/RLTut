@@ -60,7 +60,8 @@ def place_objects(room):
             item_chances['lightning'] = from_dungeon_level([[25, 4]])
             item_chances['fireball'] = from_dungeon_level([[25, 6]])
             item_chances['confuse'] = from_dungeon_level([[10, 2]])
-            item_chances['sword'] = 25
+            item_chances['sword'] = from_dungeon_level([[5, 4]])
+            item_chances['shield'] = from_dungeon_level([[15, 8]])
             choice = random_choice(item_chances)
             if choice == 'heal':
                 # create a healing potion 70%
@@ -84,8 +85,13 @@ def place_objects(room):
                               , item=item_component, always_visible=True)
             elif choice == 'sword':
                 # create a sword
-                equipment_component = Equipment(slot='right hand')
+                equipment_component = Equipment(slot='right hand', power_bonus=3)
                 item = Entity(x, y, '/', 'sword', 'light blue'
+                              , equipment=equipment_component)
+            elif choice == 'shield':
+                # create a shield
+                equipment_component = Equipment(slot='left hand', defense_bonus=1)
+                item = Entity(x, y, '[', 'shield', 'darker orange'
                               , equipment=equipment_component)
 
             var.entities.append(item)

@@ -54,18 +54,16 @@ LEVEL_SCREEN_WIDTH = 40
 CHARACTER_SCREEN_WIDTH = 30
 
 # Entities
-fighter_component = Fighter(hp=100, defense=1, power=4, xp=0, death_function=player_death)
-player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=fighter_component)
+fighter_component = None
+player = None
 stairs = None
-entities = [player]
+entities = None
 dungeon_level = None
 
 # map stuff
-map = [[Tile(True)
-        for y in range(MAP_HEIGHT)]
-       for x in range(MAP_WIDTH)]
+map = None
 
-fov_map = lib.map_new(MAP_WIDTH, MAP_HEIGHT)
+fov_map = None
 fov_recompute = True
 
 game_state = 'playing'
