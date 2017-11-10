@@ -22,20 +22,40 @@ def render_all():
                 if var.map[x][y].explored:
                     # if its been seen before
                     if wall:
-                        terminal.bkcolor(terminal.color_from_name('color_dark_wall'))
-                        terminal.put(x, y, ' ')
+                        if not var.old_school_tiles:
+                            terminal.bkcolor(terminal.color_from_name('color_dark_wall'))
+                            terminal.put(x, y, ' ')
+                        else:
+                            terminal.bkcolor(terminal.color_from_name('darkest blue'))
+                            terminal.color(terminal.color_from_name('darker grey'))
+                            terminal.put(x, y, '#')
                     else:
-                        terminal.bkcolor(terminal.color_from_name('color_dark_ground'))
-                        terminal.put(x, y, ' ')
+                        if not var.old_school_tiles:
+                            terminal.bkcolor(terminal.color_from_name('color_dark_ground'))
+                            terminal.put(x, y, ' ')
+                        else:
+                            terminal.bkcolor(terminal.color_from_name('darkest blue'))
+                            terminal.color(terminal.color_from_name('darker grey'))
+                            terminal.put(x, y, '.')
             else:
                 # it's visible
                 var.map[x][y].explored = True
                 if wall:
-                    terminal.bkcolor(terminal.color_from_name('color_light_wall'))
-                    terminal.put(x, y, ' ')
+                    if not var.old_school_tiles:
+                        terminal.bkcolor(terminal.color_from_name('color_light_wall'))
+                        terminal.put(x, y, ' ')
+                    else:
+                        terminal.bkcolor(terminal.color_from_name('darker blue'))
+                        terminal.color(terminal.color_from_name('white'))
+                        terminal.put(x, y, '#')
                 else:
-                    terminal.bkcolor(terminal.color_from_name('color_light_ground'))
-                    terminal.put(x, y, ' ')
+                    if not var.old_school_tiles:
+                        terminal.bkcolor(terminal.color_from_name('color_light_ground'))
+                        terminal.put(x, y, ' ')
+                    else:
+                        terminal.bkcolor(terminal.color_from_name('darker blue'))
+                        terminal.color(terminal.color_from_name('white'))
+                        terminal.put(x, y, '.')
 
     # draw all objects in the list, player last
     for entity in var.entities:

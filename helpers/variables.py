@@ -69,4 +69,7 @@ fov_recompute = True
 game_state = 'playing'
 player_action = None
 
+# options
+old_school_tiles = False
+
 

@@ -6,6 +6,7 @@ from helpers.new_game import new_game
 from helpers.play_game import play_game
 from helpers.load_game import load_game
 from helpers.msgbox import msgbox
+from helpers.options import options
 
 
 def main_menu():
@@ -20,13 +21,13 @@ def main_menu():
         credits = 'By Nuzcraft'
         terminal.printf(var.SCREEN_WIDTH / 2 - len(credits) / 2 - 1, var.SCREEN_HEIGHT - 2, credits)
         # show options and wait for the player's choice
-        choice = menu('', ['Play a new game', 'Continue last game', 'Quit'], 24)
+        choice = menu('', ['Play a new game', 'Continue last game', 'Options', 'Quit'], 24)
 
         if choice == 0:  # new game
             new_game()
             play_game()
             terminal.clear()
-        if choice == 1: # load game
+        elif choice == 1: # load game
             try:
                 load_game()
             except:
@@ -35,7 +36,10 @@ def main_menu():
                 terminal.clear()
                 continue
             play_game()
-        elif choice == 2:  # quit
+        elif choice == 2:  # options
+            terminal.clear()
+            options()
+        elif choice == 3:  # quit
             quit = True
 
 
