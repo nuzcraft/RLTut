@@ -4,6 +4,7 @@ from Classes.Item import Item
 from helpers.is_blocked import is_blocked
 from helpers.is_in_FOV import is_in_fov
 from helpers.is_explored import is_explored
+from helpers.astar import astar
 import math
 
 
@@ -77,3 +78,13 @@ class Entity:
         # returns distance to x and y
         return math.sqrt((x - self.x) ** 2 + (y - self.y) ** 2)
 
+    def move_astar(self, target):
+        # more advanced pathfinding to the target
+        x, y = astar(self, target)
+        if x or y:
+            # set self's coordinates to the next path tile
+            self.x = x
+            self.y = y
+        else:
+            # keep the old move function as a backup
+            self.move_towards(target.x, target.y)

@@ -26,16 +26,16 @@ def render_all():
                             terminal.bkcolor(terminal.color_from_name('color_dark_wall'))
                             terminal.put(x, y, ' ')
                         else:
-                            terminal.bkcolor(terminal.color_from_name('darkest blue'))
-                            terminal.color(terminal.color_from_name('darker grey'))
+                            terminal.bkcolor(terminal.color_from_name('darkest grey'))
+                            terminal.color(terminal.color_from_name('dark grey'))
                             terminal.put(x, y, '#')
                     else:
                         if not var.old_school_tiles:
                             terminal.bkcolor(terminal.color_from_name('color_dark_ground'))
                             terminal.put(x, y, ' ')
                         else:
-                            terminal.bkcolor(terminal.color_from_name('darkest blue'))
-                            terminal.color(terminal.color_from_name('darker grey'))
+                            terminal.bkcolor(terminal.color_from_name('darkest grey'))
+                            terminal.color(terminal.color_from_name('dark grey'))
                             terminal.put(x, y, '.')
             else:
                 # it's visible
@@ -45,7 +45,7 @@ def render_all():
                         terminal.bkcolor(terminal.color_from_name('color_light_wall'))
                         terminal.put(x, y, ' ')
                     else:
-                        terminal.bkcolor(terminal.color_from_name('darker blue'))
+                        terminal.bkcolor(terminal.color_from_name('darkest grey'))
                         terminal.color(terminal.color_from_name('white'))
                         terminal.put(x, y, '#')
                 else:
@@ -53,7 +53,7 @@ def render_all():
                         terminal.bkcolor(terminal.color_from_name('color_light_ground'))
                         terminal.put(x, y, ' ')
                     else:
-                        terminal.bkcolor(terminal.color_from_name('darker blue'))
+                        terminal.bkcolor(terminal.color_from_name('darkest grey'))
                         terminal.color(terminal.color_from_name('white'))
                         terminal.put(x, y, '.')
 

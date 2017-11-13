@@ -13,7 +13,7 @@ def cast_fireball():
     message('The fireball explodes, burning everything within ' + str(var.FIREBALL_RADIUS)
             + ' tiles!', 'orange')
     for ent in var.entities: # damage every fighter in range, including the player
-        if ent.distance_to(var.player) <= var.FIREBALL_RADIUS and ent.fighter:
+        if ent.distance_to(ent) <= var.FIREBALL_RADIUS and ent.fighter:
             message('The ' + ent.name + ' gets burned for ' + str(var.FIREBALL_DAMAGE)
                     + 'hit points.', 'orange')
             ent.fighter.take_damage(var.FIREBALL_DAMAGE)

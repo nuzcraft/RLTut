@@ -52,6 +52,8 @@ def menu(header, options, width):
         if index >=0 and index < len(options):
             return index
         return None
+
+
     terminal.clear()
     return None
 
