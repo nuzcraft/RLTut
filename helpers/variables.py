@@ -69,7 +69,8 @@ fov_recompute = True
 # bsp map stuff
 DEPTH = 10
 MIN_SIZE = 5
-FULL_ROOMS = False
+FULL_ROOMS = True
+bsp_rooms = []
 
 game_state = 'playing'
 player_action = None

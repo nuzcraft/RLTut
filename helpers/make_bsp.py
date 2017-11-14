@@ -7,6 +7,7 @@ import random
 from helpers.send_to_back import send_to_back
 from helpers.place_objects import place_objects
 from helpers.initialize_fov import initialize_fov
+from helpers.traverse_node import traverse_node
 
 
 def make_bsp():
@@ -18,9 +19,6 @@ def make_bsp():
     var.fov_map = lib.map_new(var.MAP_WIDTH, var.MAP_HEIGHT)
     var.fov_recompute = True
 
-    # empty list for storing room coordinates
-    bsp_rooms = []
-
     # new root node
     bsp = lib.bsp_new_with_size(0, 0, var.MAP_WIDTH, var.MAP_HEIGHT)
 
@@ -31,20 +29,20 @@ def make_bsp():
     lib.bsp_traverse_inverted_level_order(bsp, traverse_node)
 
     # Random room for the stairs
-    stairs_location = random.choice(bsp_rooms)
-    bsp_rooms.remove(stairs_location)
+    stairs_location = random.choice(var.bsp_rooms)
+    var.bsp_rooms.remove(stairs_location)
     var.stairs = Entity(stairs_location[0], stairs_location[1], '<', 'stairs', 'white', always_visible=True)
     var.entities.append(var.stairs)
     send_to_back(var.stairs)
 
     # Random room for player start
-    player_room = random.choice(bsp_rooms)
-    bsp_rooms.remove(player_room)
+    player_room = random.choice(var.bsp_rooms)
+    var.bsp_rooms.remove(player_room)
     var.player.x = player_room[0]
     var.player.y = player_room[1]
 
     # add monsters and items
-    for room in bsp_rooms:
+    for room in var.bsp_rooms:
         new_room = Rect(room[0], room[1], 2, 2)
         place_objects(new_room)
 
