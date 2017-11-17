@@ -11,8 +11,10 @@ def new_game():
     # initialize variables
     initialize_variables()
     var.dungeon_level = 1
-    # make_map()
-    make_bsp()
+    if not var.bsp_map_gen:
+        make_map()
+    else:
+        make_bsp()
     initialize_fov()
     message('Welcome stranger! Prepare to perish in the Tombs of the Ancient Kings.', 'red')
 

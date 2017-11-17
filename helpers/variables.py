@@ -77,5 +77,6 @@ player_action = None
 
 # options
 old_school_tiles = False
+bsp_map_gen = False
 
 
