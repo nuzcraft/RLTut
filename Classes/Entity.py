@@ -49,7 +49,7 @@ class Entity:
             terminal.bkcolor(terminal.color_from_name('transparent'))
             # set the color and then draw the character that represents this object at its position
             terminal.color(terminal.color_from_name(self.color))
-            terminal.put(self.x, self.y, self.char)
+            terminal.printf(self.x, self.y, self.char)
 
     def clear(self):
         # erase the character that represents this object
