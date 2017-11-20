@@ -1,10 +1,12 @@
 from bearlibterminal import terminal
 import variables as var
 from helpers.menu import menu
+from helpers.swap_graphical_tiles import swap_graphical_tiles
 
 
 def options():
     choice = menu('OPTIONS', ['Old School Tiles   | ' + str(var.old_school_tiles)
+                              , 'Graphical Tiles  | ' + str(var.graphical_tiles)
                               , 'BSP Map Generation | ' + str(var.bsp_map_gen)
                               , 'BSP Full Rooms     | ' + str(var.FULL_ROOMS)
                               , 'Return to Main Menu'], 24)
@@ -13,13 +15,18 @@ def options():
         terminal.clear()
         options()
     elif choice == 1:
-        var.bsp_map_gen = not var.bsp_map_gen
+        var.graphical_tiles = not var.graphical_tiles
+        swap_graphical_tiles()
         terminal.clear()
         options()
     elif choice == 2:
-        var.FULL_ROOMS = not var.FULL_ROOMS
+        var.bsp_map_gen = not var.bsp_map_gen
         terminal.clear()
         options()
     elif choice == 3:
+        var.FULL_ROOMS = not var.FULL_ROOMS
+        terminal.clear()
+        options()
+    elif choice == 4:
         terminal.clear()
 
