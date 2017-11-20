@@ -25,7 +25,8 @@ def initialize_variables():
     # Entities
     var.fighter_component = Fighter(hp=100, defense=1, power=2, xp=0, death_function=player_death)
     # var.player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=var.fighter_component)
-    var.player = Entity(25, 23, var.player_char, 'player', 'white', blocks=True, fighter=var.fighter_component)
+    var.player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=var.fighter_component
+                        , graphical_char='[0xE02C]')
     var.player.level = 1
     var.entities = [var.player]
 

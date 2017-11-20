@@ -5,6 +5,7 @@ from helpers.is_blocked import is_blocked
 from helpers.is_in_FOV import is_in_fov
 from helpers.is_explored import is_explored
 from helpers.astar import astar
+from helpers.is_graphical_tiles import is_graphical_tiles
 import math
 
 
@@ -12,7 +13,7 @@ class Entity:
     # this is a generic object: the player, a monster, an item, the stairs...
     # it is always represented by a character on screen
     def __init__(self, x, y, char, name, color, blocks=False, always_visible=False
-                 , fighter=None, ai=None, item=None, equipment=None):
+                 , fighter=None, ai=None, item=None, equipment=None, graphical_char=None):
         self.x = x
         self.y = y
         self.char = char
@@ -34,7 +35,7 @@ class Entity:
             self.equipment.owner = self
             self.item = Item()
             self.item.owner = self
-
+        self.graphical_char = graphical_char
 
     def move(self, dx, dy):
         # move by the given amount
@@ -49,7 +50,10 @@ class Entity:
             terminal.bkcolor(terminal.color_from_name('transparent'))
             # set the color and then draw the character that represents this object at its position
             terminal.color(terminal.color_from_name(self.color))
-            terminal.printf(self.x, self.y, self.char)
+            if is_graphical_tiles() and self.graphical_char is not None:
+                terminal.printf(self.x, self.y, self.graphical_char)
+            else:
+                terminal.printf(self.x, self.y, self.char)
 
     def clear(self):
         # erase the character that represents this object

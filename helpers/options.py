@@ -1,7 +1,6 @@
 from bearlibterminal import terminal
 import variables as var
 from helpers.menu import menu
-from helpers.swap_graphical_tiles import swap_graphical_tiles
 
 
 def options():
@@ -16,7 +15,6 @@ def options():
         options()
     elif choice == 1:
         var.graphical_tiles = not var.graphical_tiles
-        swap_graphical_tiles()
         terminal.clear()
         options()
     elif choice == 2:
