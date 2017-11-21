@@ -26,7 +26,7 @@ def initialize_variables():
     var.fighter_component = Fighter(hp=100, defense=1, power=2, xp=0, death_function=player_death)
     # var.player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=var.fighter_component)
     var.player = Entity(25, 23, '@', 'player', 'white', blocks=True, fighter=var.fighter_component
-                        , graphical_char='[0xE02C]')
+                        , graphical_char='[0xE0A2]')
     var.player.level = 1
     var.entities = [var.player]
 
@@ -43,7 +43,8 @@ def initialize_variables():
 
     # initial equipment: a dagger
     equipment_component = Equipment(slot='right hand', power_bonus=2)
-    ent = Entity(0, 0, '-', 'dagger', 'lighter blue', equipment=equipment_component)
+    ent = Entity(0, 0, '-', 'dagger', 'lighter blue', equipment=equipment_component
+                 , graphical_char='[0xE0AA]')
     var.inventory.append(ent)
     equipment_component.equip()
     ent.always_visible = True

@@ -48,11 +48,12 @@ class Entity:
         if is_in_fov(self.x, self.y) or (self.always_visible and is_explored(self.x, self.y)):
             # get the background color
             terminal.bkcolor(terminal.color_from_name('transparent'))
-            # set the color and then draw the character that represents this object at its position
-            terminal.color(terminal.color_from_name(self.color))
             if is_graphical_tiles() and self.graphical_char is not None:
+                terminal.color(terminal.color_from_name('white'))
                 terminal.printf(self.x, self.y, self.graphical_char)
             else:
+                # set the color and then draw the character that represents this object at its position
+                terminal.color(terminal.color_from_name(self.color))
                 terminal.printf(self.x, self.y, self.char)
 
     def clear(self):

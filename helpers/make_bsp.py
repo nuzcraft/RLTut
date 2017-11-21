@@ -31,7 +31,8 @@ def make_bsp():
     # Random room for the stairs
     stairs_location = random.choice(var.bsp_rooms)
     var.bsp_rooms.remove(stairs_location)
-    var.stairs = Entity(stairs_location[0], stairs_location[1], '<', 'stairs', 'white', always_visible=True)
+    var.stairs = Entity(stairs_location[0], stairs_location[1], '<', 'stairs', 'white', always_visible=True
+                        , graphical_char='[0xE0A9]')
     var.entities.append(var.stairs)
     send_to_back(var.stairs)
 

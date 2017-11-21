@@ -36,13 +36,13 @@ def place_objects(room):
             fighter_component = Fighter(hp=20, defense=0, power=4, xp=35, death_function=monster_death)
             ai_component = BasicMonster()
             monster = Entity(x, y, 'o', 'orc', 'desaturated_green', blocks=True
-                             , fighter=fighter_component, ai=ai_component)
+                             , fighter=fighter_component, ai=ai_component, graphical_char='[0xE0A3]')
         elif choice == 'troll':
             # create a troll
             fighter_component = Fighter(hp=30, defense=2, power=8, xp=100, death_function=monster_death)
             ai_component = BasicMonster()
             monster = Entity(x, y, 'T', 'troll', 'darker green', blocks=True
-                             , fighter=fighter_component, ai=ai_component)
+                             , fighter=fighter_component, ai=ai_component, graphical_char='[0xE0A4]')
 
         # only place if  the tile is not blocked
         if not is_blocked(x, y):
@@ -67,32 +67,32 @@ def place_objects(room):
                 # create a healing potion 70%
                 item_component = Item(use_function=cast_heal)
                 item = Entity(x, y, '!', 'healing potion', 'violet'
-                              , item=item_component, always_visible=True)
+                              , item=item_component, always_visible=True, graphical_char='[0xE0A6]')
             elif choice == 'lightning':
                 # create a lighting bolt scroll 10%
                 item_component = Item(use_function=cast_lightning)
                 item = Entity(x, y, '#', 'scroll of lightning bolt', 'light yellow'
-                              , item=item_component, always_visible=True)
+                              , item=item_component, always_visible=True, graphical_char='[0xE0A5]')
             elif choice == 'confuse':
                 # create a confuse scroll (10%) chance
                 item_component = Item(use_function=cast_confuse)
                 item = Entity(x, y, '#', 'scroll of confusion', 'light yellow'
-                              , item=item_component, always_visible=True)
+                              , item=item_component, always_visible=True, graphical_char='[0xE0A5]')
             elif choice == 'fireball':
                 # create a fireball scroll (10%) chance
                 item_component = Item(use_function=cast_fireball)
                 item = Entity(x, y, '#', 'scroll of fireball', 'light yellow'
-                              , item=item_component, always_visible=True)
+                              , item=item_component, always_visible=True, graphical_char='[0xE0A5]')
             elif choice == 'sword':
                 # create a sword
                 equipment_component = Equipment(slot='right hand', power_bonus=3)
                 item = Entity(x, y, '/', 'sword', 'light blue'
-                              , equipment=equipment_component)
+                              , equipment=equipment_component, graphical_char='[0xE0A7]')
             elif choice == 'shield':
                 # create a shield
                 equipment_component = Equipment(slot='left hand', defense_bonus=1)
                 item = Entity(x, y, '[', 'shield', 'darker orange'
-                              , equipment=equipment_component)
+                              , equipment=equipment_component, graphical_char='[0xE0A8]')
 
             var.entities.append(item)
             send_to_back(item) # items appear below other objects

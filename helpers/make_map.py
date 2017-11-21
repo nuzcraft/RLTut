@@ -81,7 +81,7 @@ def make_map():
             num_rooms += 1
 
     # create stairs at the center of the last room
-    var.stairs = Entity(new_x, new_y, '<', 'stairs', 'white', always_visible=True)
+    var.stairs = Entity(new_x, new_y, '<', 'stairs', 'white', always_visible=True, graphical_char='[0xE0A9]')
     var.entities.append(var.stairs)
     send_to_back(var.stairs)
 
