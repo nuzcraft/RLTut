@@ -5,7 +5,7 @@ from helpers.menu import menu
 
 def options():
     choice = menu('OPTIONS', ['Old School Tiles   | ' + str(var.old_school_tiles)
-                              , 'Graphical Tiles  | ' + str(var.graphical_tiles)
+                              , 'Graphical Tiles    | ' + str(var.graphical_tiles)
                               , 'BSP Map Generation | ' + str(var.bsp_map_gen)
                               , 'BSP Full Rooms     | ' + str(var.FULL_ROOMS)
                               , 'Return to Main Menu'], 24)

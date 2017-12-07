@@ -13,6 +13,8 @@ def main_menu():
     quit = False
     # function to handle the main menu
     while not quit:
+        # show the background
+        terminal.printf(0, 0, '[0xEFFF]')
         # show the game's title and some credits
         terminal.color(terminal.color_from_name('light yellow'))
         terminal.bkcolor(terminal.color_from_name('transparent'))
