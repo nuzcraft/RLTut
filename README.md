@@ -14,5 +14,6 @@ TODO:
 - [ ] Adding simple animations
 - [ ] Saving options to an external file (so they save from day to day)
 - [ ] ability to swip-swap fonts and sizes
+- [ ] fix continuing previous game
 
 Feel free to raise issues / submit pull requests :+1:
