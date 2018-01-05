@@ -3,8 +3,8 @@ Hello all, this repo is an example of [Roguebasin's Complete Roguelike Tutorial]
 
 I had a couple goals while coding this:
 1. Learn python - I'm pretty inexperienced with python, so this was a learning exercise
-2. Subfiles - I've done roguebasin's tutorial a couple times, and haven't been a fan of the '1 large file' system
-3. Bearlib Terminal - I've wanted to dip my toes into Bearlib functionality for a while, but getting the hang of it was proving difficult
+2. Use sub-files - I've done roguebasin's tutorial a couple times, and haven't been a fan of the '1 large file' system
+3. Learn Bearlib Terminal - I've wanted to dip my toes into Bearlib functionality for a while, but getting the hang of it was proving difficult
 
 The code can be launched from [main.py](main.py), compiling it to an .exe is on my TODO list. Just like the Roguebasin tutorial, it uses Python 2.7.
 
