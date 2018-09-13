@@ -78,9 +78,9 @@ player_action = None
 # options
 old_school_tiles = False
 bsp_map_gen = False
-graphical_tiles = True
+graphical_tiles = False
 
 # character
-player_char = '@' # '[0xE02C]'
+player_char = '@'  # '[0xE02C]'
 
 
