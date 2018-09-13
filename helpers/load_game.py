@@ -1,4 +1,5 @@
 # load the previously saved game
+import libtcodpy as lib
 import variables as var
 import shelve
 from helpers.initialize_fov import initialize_fov
@@ -12,13 +13,15 @@ def load_game():
     file = shelve.open('savegame', 'r')
     var.map = file['map']
     var.entities = file['entities']
-    var.player = var.entities[file['player_index']] # get index of player in entity list
+    var.player = var.entities[file['player_index']]  # get index of player in entity list
     var.inventory = file['inventory']
     var.game_msgs = file['game_msgs']
     var.game_state = file['game_state']
     var.stairs = var.entities[file['stairs_index']]
     var.dungeon_level = file['dungeon_level']
     file.close()
+
+    var.fov_map = lib.map_new(var.MAP_WIDTH, var.MAP_HEIGHT)
 
     initialize_fov()
 
